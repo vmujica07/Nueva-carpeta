@@ -112,3 +112,182 @@ declare
      WHERE oficio = 'ANALISTA'; 
 End;
 ROLLBACK;
+--
+--
+--
+--
+--
+
+declare
+v_numero int;
+begin  
+  v_numero := &numero;  
+  if (v_numero = 1) then 
+     dbms_output.put_line('Positivo: ' || v_numero );  
+  else 
+     dbms_output.put_line('Negativo: ' || v_numero );  
+  end if;
+   dbms_output.put_line('Fin de Programa'  );  
+end;
+undefine numero;
+--
+--
+declare
+v_numero int;
+begin  
+  v_numero := &numero;  
+  if (v_numero > 0) then 
+     dbms_output.put_line('Positivo: ' || v_numero );  
+  elsif (v_numero = 0) then 
+     dbms_output.put_line('Es cero: ' || v_numero );
+  elsif (v_numero < 0) then
+      dbms_output.put_line('Negativo: ' || v_numero );  
+  end if;
+   dbms_output.put_line('Fin de Programa2'  );  
+end;
+--
+--
+declare
+v_numero int;
+begin  
+  v_numero := &numero;  
+  if (v_numero = 1) then 
+     dbms_output.put_line('Primavera: ' || v_numero );  
+  elsif (v_numero = 2) then 
+     dbms_output.put_line('Verano: ' || v_numero );
+  elsif (v_numero = 3) then
+      dbms_output.put_line('Otoño: ' || v_numero );
+  elsif (v_numero = 4) then
+      dbms_output.put_line('Invierno: ' || v_numero );
+  else
+      dbms_output.put_line('Otro: ' || v_numero );   
+  end if;
+   dbms_output.put_line('Fin de Programa3'  );  
+end;
+--
+--
+declare
+v_numero1 int;
+v_numero2 int;
+begin  
+  v_numero1 := &numero1;
+  v_numero2 := &numero2;  
+  if (v_numero1 > v_numero2 ) then 
+     dbms_output.put_line('Primer valor ingresado es mayor: ' || v_numero1);  
+  else
+      dbms_output.put_line('Segundo valor ingresado es mayor: ' || v_numero2);   
+  end if;
+   dbms_output.put_line('Fin de Programa4'  );  
+end;
+undefine numero1;
+undefine numero2;
+--
+--
+declare
+v_numero int;
+begin  
+  v_numero := &numero;
+  if (mod(v_numero,2) = 0 then 
+     dbms_output.put_line('resulatdo es par: ' || v_numero );  
+  else
+      dbms_output.put_line('resultado es impar ' || v_numero );   
+  end if;
+   dbms_output.put_line('Fin de Programa5'  );  
+end;
+undefine numero;
+--
+--
+/
+declare
+v_letra varchar2(1);
+begin  
+  v_letra := lower('&letra');
+  if (v_letra = 'a' or 
+      v_letra = 'e' or 
+      v_letra = 'i' or 
+      v_letra = 'o' or 
+      v_letra = 'u') then 
+     dbms_output.put_line('Vocal: ' || v_letra);  
+  else
+      dbms_output.put_line('Consonante ' || v_letra);   
+  end if;
+   dbms_output.put_line('Fin de Programa6'  );  
+end;
+/
+undefine numero1;
+undefine numero2;
+undefine numero3;
+--
+declare
+v_numero1 int;
+v_numero2 int;
+v_numero3 int;
+begin  
+  v_numero1 := &numero1;
+  v_numero2 := &numero2;
+  v_numero3 := &numero3;  
+  if (v_numero1 > v_numero2) and (v_numero1 > v_numero3 )  then 
+     dbms_output.put_line('Primer valor es el mayor: ' || v_numero1);  
+  elsif (v_numero2 > v_numero3) then 
+      dbms_output.put_line('Segundo valor es el mayor: ' || v_numero2);   
+  else 
+      dbms_output.put_line('Tercer valor es el mayor: ' || v_numero3);       
+  end if;
+   dbms_output.put_line('Fin de Programa7'  );  
+end;
+--
+--
+declare
+v_numero1 int;
+v_numero2 int;
+v_numero3 int;
+begin  
+  v_numero1 := &numero1;
+  v_numero2 := &numero2;
+  v_numero3 := &numero3;  
+  if (v_numero1 > v_numero2) and (v_numero1 < v_numero3 )  then 
+     dbms_output.put_line('Primer valor es el del medio: ' || v_numero1);  
+--  elsif (v_numero2 > v_numero3) then 
+--      dbms_output.put_line('Segundo valor es el mayor: ' || v_numero2);   
+--  else 
+--      dbms_output.put_line('Tercer valor es el mayor: ' || v_numero3);       
+  end if;
+   dbms_output.put_line('Fin de Programa8'  );  
+end;
+--
+--
+declare
+v_dia int;
+v_mes int;
+v_ano int;
+v_ano1 int;
+v_ano2 int;
+v_resultado int;
+begin  
+  v_dia := &dia;
+  v_mes := &mes;
+  v_ano := &ano; 
+  v_ano1 := v_ano; 
+--
+  if (v_mes = 1) then
+     v_mes := 13
+     v_ano := v_ano - 1;
+  end if;
+--
+  if (v_mes = 2) then
+     v_mes := 14
+     v_ano := v_ano - 1;
+  end if;
+  --
+    (((v_mes := v_mes + 1) * 3) / 5); 
+--
+    (v_ano := v_ano / 4);
+--
+    (v_ano1 := v_ano1 / 100);
+--
+    (v_ano2 := v_ano2 / 400); 
+--
+     (v_resultado)
+-
+   dbms_output.put_line('Fin de Programa8'  );  
+end;
