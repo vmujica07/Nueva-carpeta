@@ -67,3 +67,48 @@ End;
 undefine dpto;
 select * from EMP
 ORDER BY DEPT_NO;
+--
+--
+declare 
+     v_numero    DEPT.dept_no%type;
+     v_nombre    DEPT.dnombre%type;
+     v_localidad DEPT.LOC%TYPE;
+Begin
+     v_numero := '&numero';
+     v_nombre := '&nombre';
+     v_localidad := '&localidad';
+     --
+     insert into DEPT values (v_numero, v_nombre, v_localidad); 
+End;
+--
+select * from DEPT;
+--
+--PRACTICA
+--
+declare 
+     v_emp_no    EMP.emp_no%type;
+     v_apellido  EMP.apellido%type;
+     v_oficio    EMP.oficio%type;
+     v_dept_no   emp.dept_no%TYPE;
+
+     Begin
+     v_emp_no   := 9999;
+     v_apellido := 'PEREZ';
+     v_oficio   := 'ANALISTA';
+     v_dept_no  := '10';
+          insert into EMP(emp_no, apellido, oficio, fecha_alt, dept_no)  
+          values (v_emp_no, v_apellido, v_oficio, sysdate, v_dept_no); 
+End;
+select * from EMP
+where oficio = 'ANALISTA' ;
+--
+--
+declare 
+     v_salario  EMP.salario%type;    
+     Begin
+     v_salario := v_salario + 200;
+     update EMP 
+     set SALARIO = v_salario 
+     WHERE oficio = 'ANALISTA'; 
+End;
+ROLLBACK;
