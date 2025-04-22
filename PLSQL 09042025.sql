@@ -1,3 +1,51 @@
+---
+declare
+   v_texto varchar2(50);
+   v_longitud int;
+   v_letra varchar2(1);
+   final varchar2(50);
+
+begin
+v_texto := '&valori'; 
+Final := length(v_texto);
+     for i in 1..final  loop
+     v_letra := substr(final, i, 1);
+     dbms_output.put_line(v_letra);
+end loop;
+       dbms_output.put_line('fin del programa');
+end;
+----
+declare
+   v_texto varchar2(50);
+   v_longitud int;
+   v_letra varchar2(1);
+   final varchar2(50);
+
+begin
+v_texto := '&valori'; 
+Final := length(v_texto);
+v_numero := to_number(v_letra);
+ /*  <-------   convertir de string a number  */
+     for i in 1..final  loop
+     v_letra := substr(final, i, 1);
+     dbms_output.put_line(v_letra);
+end loop;
+       dbms_output.put_line('fin del programa');
+end;
+----
+---- DIA 22/04/2025
+--
+--
+--  cursores
+
+
+
+
+
+
+
+
+
 declare
 --declaramos una variable
   numero int;
@@ -290,4 +338,187 @@ begin
      (v_resultado)
 -
    dbms_output.put_line('Fin de Programa8'  );  
+end;
+--
+--
+---  21/04/2025---
+--
+--   LOOP   entra y luego evalua
+--
+declare
+       i int;
+       suma int;
+begin
+i := 1;
+suma := 0;
+loop
+   suma:= suma + i;
+    i := i +1;
+    exit when i > 100;
+end loop;
+    dbms_output.put_line('Lasuma de los primeros 100 numeros es: ' || suma);
+end;
+--
+--
+--
+--   WHILE ... LOOP   evalua y luego entra
+--
+--
+declare
+       i int;
+       suma int;
+begin
+i := 1;
+suma := 100;
+while i <= 100  loop
+   suma := suma + i;
+    i := i + 1;
+end loop;
+    dbms_output.put_line('Lasuma de los primeros 100 numeros es: ' || suma);
+end;
+--
+--
+--    FOR.... LOOP (CONTADOR)
+--
+declare
+        suma int;
+begin
+     suma := 0;
+     for  i in 1..101  loop
+     suma := suma + i;
+     end loop; 
+    dbms_output.put_line('Lasuma de los primeros 100 numeros es: ' || suma);
+end; 
+--
+--
+-- ETIQUETRA GOTO PARA UN BUCLE
+declare
+        suma int;
+begin
+     suma := 0;
+     dbms_output.put_line('inicio');
+     goto codigo;
+     dbms_output.put_line('antes del bucle');
+     for  i in 1..101  loop
+     suma := suma + i;
+     end loop;
+     << codigo >>
+     dbms_output.put_line('despues del bucle');
+     dbms_output.put_line('Lasuma de los primeros 100 numeros es: ' || suma);
+end;
+--
+--
+-- EJEMPLOS
+--BUCLE PARA MOSTRAR LOS NUMEROS ENTRE 1 Y 10
+-- BUCLE WHILE
+-- BUCLE FOR
+declare
+       i int;
+       suma int;
+begin
+i := 1;
+while i <= 10  loop
+   dbms_output.put_line('Numeros del 1 al 10: ' || i);
+   i := i + 1; 
+   end loop;
+end;    
+--
+declare
+        begin
+        for  i in 1..10  loop
+        dbms_output.put_line('valor de i : ' || i);
+        end loop;
+     end;
+--
+--pedir al usuario un numero inicial y un numero final
+--montrar los numeros comprendidios entre dicho rango
+declare
+        inicio int;
+        final int;  
+        begin
+        inicio := &inicial;
+        final := &fina;
+        if inicio >= final then
+         dbms_output.put_line('numero inicio es mayor' || inicio ); 
+          dbms_output.put_line('que numero final' || final );
+        else 
+        for  i in inicio..final  loop
+        dbms_output.put_line('valor de i : ' || i);
+        end loop;
+        end if;
+        dbms_output.put_line('Final de Programa');  
+     end;
+     undefine inicial;
+     undefine fina;
+     --
+     --
+     imprimir los numero pares entre dos numeros
+    --
+    declare
+        inicio int;
+        final int;  
+        begin
+        inicio := &inicial;
+        final := &fina;
+        for  i in inicio..final  loop
+        if (mod(i, 2) <> 0) then  
+        dbms_output.put_line('valor de i : ' || i);
+        end if;
+        end loop;
+        dbms_output.put_line('Final de Programa');  
+     end; 
+--
+--
+declare
+            valor int;
+begin
+valor := &entarda;
+while valor <> 1  loop
+   if (mod(valor, 2) = 0) then
+      valor := valor / 2;
+       dbms_output.put_line('par: ' || valor);
+   else   
+      valor := valor * 3; 
+      valor := valor + 1;
+      dbms_output.put_line('impar: ' || valor);
+   end if;   
+end loop;
+    dbms_output.put_line('resultado: ' || valor);
+end;
+--
+--
+mostra la tabla de multipiclar del numero que ingresado por pantalla
+--
+--
+declare
+       i int;
+       multiplica int;
+begin
+i := 1;
+multiplica := &valor;
+loop
+   multiplica := multiplica * i;
+   dbms_output.put_line(&valor|| ' ' || '*' || ' ' || i || ' '|| '=' || ' ' || multiplica);
+    i := i + 1;
+     multiplica := &valor;
+    exit when i > 10;
+end loop;
+    dbms_output.put_line('fin del programa');
+end;
+--
+--
+declare
+   v_texto varchar2(50);
+   v_longitud int;
+   v_letra varchar2(1);
+   final varchar2(50);
+
+begin
+v_texto := '&valori'; 
+Final := length(v_texto);
+     for i in 1..final  loop
+     v_letra := substr(final, i, 1);
+     dbms_output.put_line(v_letra);
+end loop;
+       dbms_output.put_line('fin del programa');
 end;
