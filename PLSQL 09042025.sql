@@ -1,4 +1,12 @@
 ---
+declare 
+       v_id int;
+begin 
+      v_id := &numero;
+      select * from DEPT where DEPT_NO = v_id;
+end; 
+--
+--
 declare
    v_texto varchar2(50);
    v_longitud int;
@@ -37,15 +45,47 @@ end;
 --
 --
 --  cursores
-
-
-
-
-
-
-
-
-
+--sobre tabla departamentos
+declare
+      v_nombre dept.dnombre%type;
+      v_loc dept.loc%type;
+begin  
+     For i in 1..5 loop
+         v_nombre := 'Departamento ' || i;
+         v_loc    := 'Localidad ' || i;
+         insert into DEPT values (i, v_nombre, v_loc);
+     end loop;
+     dbms_output.put_line('fin del programa');
+end;
+--
+--
+select * from DEPT
+ORDER BY DEPT_NO;
+--
+--
+declare
+      v_nombre dept.dnombre%type;
+      v_loc dept.loc%type;
+begin  
+     For i in 1..5 loop
+         v_nombre := 'Departamento ' || i;
+         v_loc    := 'Localidad ' || i;
+         insert into DEPT values ((select max(DEPT_NO) + 1 from DEPT), v_nombre, v_loc);
+     end loop;
+     dbms_output.put_line('fin del programa');
+end;
+--
+--
+rollback; 
+--
+--
+declare 
+       v_id int;
+begin 
+      v_id := &numero;
+      select * from DEPT where DEPT_NO = v_id;
+end; 
+---------------------------------------------------------
 declare
 --declaramos una variable
   numero int;
